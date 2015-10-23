@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<!-- Welcome to the TypeScript/AngularJS primer -->
+<html ng-app="chrisApp">
+
+    <!-- the head specifies all meta information -->
+    <head>
+
+        <!-- the document's title -->
+        <title>TypeScript/AngularJS primer, v.0.1</title>
+
+        <!-- specify the charset -->
+        <meta charset="utf8">
+
+        <!-- suppress viewport scalation for touch-devices and use cutting edge browser features -->
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- set the favicon icon -->
+        <link rel="icon"          href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- use these external stylesheets - the bootstrap API is included -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap_3.0.3.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        <!-- use these external JavaScript sources - the angularJS API is included -->
+        <script type="text/javascript" src="lib/angular_1.4.0.js"></script>
+        <script type="text/javascript" src="lib/angular-animate_1.4.0.js"></script>
+        <script type="text/javascript" src="lib/angular-route_1.4.0.js"></script>
+        <script type="text/javascript" src="src/de/mayflower/angular/app.js"></script>
+
+        <!-- use these transpiled JavaScript sources -->
+        <script type="text/javascript" src="src/de/mayflower/angular/MfgNgApp.js"></script>
+
+    </head>
+
+    <!-- the body will be appended with the HTML5 canvas3D -->
+    <body class="ngTest">
+
+        <!-- example 1 - expressions -->
+        <input type="text" ng-model="search">
+        <p>Search is: [{{search}}]</p>
+
+        <!-- example 2 - expressions -->
+        <p>Search in UpperCase is: [{{search.toUpperCase()}}]</p>
+        <p>Search length is: [{{search.length}}]</p>
+        <p>Dynamic example is: [{{1 + 2 + 3}}]</p>
+
+        <!-- example 3 - condition-directives - only shows if 'search' has a value -->
+        <p ng-show="search">You have been looking for: {{search}}</p>
+        <p></p>
+
+        <!-- example 4 - loop-directives - shows up repeated times -->
+        <table border="1px" align="center">
+            <tr ng-repeat="article in ['Pizza Margherita', 'Pizza Tonno', 'Pizza Diavolo']">
+                <td>{{article}}</td>
+            </tr>
+        </table>
+        <p></p>
+
+        <!-- example 5 - specifying variables using ng-init -->
+        <table border="1px" align="center" ng-init="articles = ['Pasta Farfalle', 'Pasta Penne', 'Pasta Rigatoni']">
+            <tr ng-repeat="article in articles">
+                <td>{{article}}</td>
+            </tr>
+        </table>
+        <p></p>
+
+        <hr>
+
+        <!-- example 6 - filtering loops -->
+        <p>Article Search filter:</p>
+        <input type="text" ng-model="articleSearch">
+        <p></p>
+        <table border="1px" align="center" ng-init="products = ['Article Rubber Duck', 'Article Bottle Neck', 'Article Wool Pullover']">
+            <tr ng-repeat="product in products | filter:articleSearch">
+                <td>{{product}}</td>
+            </tr>
+        </table>
+        <p></p>
+
+        <!-- example 7 - controllers -->
+        <table border="1px" align="center" ng-controller="ArticlesCtrl">
+            <tr ng-repeat="article in articles | filter:articleSearch">
+                <td>{{article.id}}</td>
+                <td>{{article.name}}</td>
+                <td>{{article.price}}</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <!-- example 8 - services -->
+        <p></p>
+        <p>External JSON data:</p>
+        <input type="text" ng-model="flyerArticleSearch">
+        <p></p>
+        <table border="1px" align="center" ng-controller="FlyerArticlesCtrl">
+            <tr ng-repeat="article in flyerArticles | filter:flyerArticleSearch">
+                <td>{{article.id}}</td>
+                <td>{{article.name}}</td>
+                <td>{{article.price}}</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <!-- example 9 - service factory -->
+        <p></p>
+        <p>Service factory:</p>
+        <input type="text" ng-model="cartArticleSearch">
+        <p></p>
+        <table border="1px" align="center" ng-controller="CartArticlesCtrl">
+            <tr ng-repeat="article in cartArticles | filter:cartArticleSearch">
+                <td>{{article.id}}</td>
+                <td>{{article.name}}</td>
+                <td>{{article.price}}</td>
+                <td><a href class="btn btn-default btn-sm" ng-click="cart.addArticle(article);">Hinzufügen</a></td>
+            </tr>
+        </table>
+
+        <p></p>
+        <p>Shopping Cart:</p>
+        <div ng-controller="CartCartCtrl">
+            <div ng-hide="cart.getItems().length" style="color: #ff0000;">Ihr Warenkorb ist noch leer.</div>
+            <table border="1px" align="center" ng-show="cart.getItems().length">
+                <tr ng-repeat="item in cart.getItems() track by $index" class="cart-item">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | currency}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="background-color: #c7c7c7;">
+                    <td>{{cart.getItems().length}} Artikel</td>
+                    <td>{{cart.sum() | currency}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- example 10 - directives -->
+        <p></p>
+        <p>Price-Tag (77.8): <price value="77.8"></price></p>
+        <p>Price-Tag (00.000): <price value="00.000"></price></p>
+
+        <!-- example 11 - routes -->
+        <p>
+                <a href="#/">Start</a>
+            |   <a href="#/about">Über</a>
+            |   <a href="#/contact">Kontakt</a>
+            |   <a href="#/imprint">Impressum</a>
+        </p>
+        <div ng-view></div>
+
+    </body>
+
+</html>

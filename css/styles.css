@@ -1,0 +1,34 @@
+
+    /*****************************************************************************
+    *   Contains all style attributes the html page makes use of.
+    *
+    *   @author     Christopher Stock
+    *   @version    0.0.1
+    *****************************************************************************/
+    body.ngTest
+    {
+        margin:                     25px auto 25px auto;
+        overflow-x:                 auto;
+        overflow-y:                 scroll;
+        text-align:                 center;
+        background:                 #ffffff url( ../res/image/logoAngularjsWatermark.png ) no-repeat right top;
+    }
+
+    hr
+    {
+        height:                     1px;
+        width:                      500px;
+        border:                     1px #aaaaaa solid;
+    }
+
+    tr.cart-item.ng-enter
+    {
+        -webkit-transition:         0.5s linear all;
+        transition:                 0.5s linear all;
+        background-color:           #ffff00;
+    }
+
+    tr.cart-item.ng-enter-active
+    {
+        background-color:           #ffffff;
+    }

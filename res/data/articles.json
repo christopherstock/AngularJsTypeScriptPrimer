@@ -1,0 +1,6 @@
+[
+    {   "id": "1",  "name": "Flyer Mayflower",      "price": 27     },
+    {   "id": "2",  "name": "Flyer Flyeralarm",     "price": 42.5   },
+    {   "id": "3",  "name": "Flyer Joey's Pizza",   "price": 23     },
+    {   "id": "4",  "name": "Flyer RoadRunner",     "price": 38     }
+]

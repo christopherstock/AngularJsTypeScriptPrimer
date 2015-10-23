@@ -1,0 +1,33 @@
+
+    /************************************************************************************
+    *   The main class contains the application's points of entry and termination.
+    *
+    *   @author     Christopher Stock
+    *   @version    0.0.1
+    *****************************************************************************/
+    class MfgNgApp
+    {
+        /*****************************************************************************
+        *   This method is invoked when the application starts.
+        *****************************************************************************/
+        public static main():void
+        {
+            alert( "TypeScript is onboard!" );
+        }
+    }
+
+    /*****************************************************************************
+    *   This is the application's point of entry.
+    *****************************************************************************/
+    window.onload = function()
+    {
+        //invoke main method
+        MfgNgApp.main();
+    };
+
+    /*****************************************************************************
+    *   This is the application's point of termination.
+    *****************************************************************************/
+    window.onunload = function()
+    {
+    };
