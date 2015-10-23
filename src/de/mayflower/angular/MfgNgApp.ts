@@ -2,12 +2,12 @@
     /************************************************************************************
     *   The main class contains the application's points of entry and termination.
     *
-    *   TODO ASAP   Try .d.ts !
     *   TODO HIGH   Outsource all css style attributes.
     *   TODO INIT   Move all JS files to TS.
     *   TODO LOW    Separate functionality to different TS classes.
     *   TODO WEAK   Give TS modules one more try?
     *
+    *   DONE        Try .d.ts !
     *   DONE        Apply AngularJS animations.
     *   DONE        Solve all functionality from the AngularJS tutorial.
     *
@@ -153,12 +153,14 @@
 
     MfgNgApp.myModule.config(
         function( $routeProvider ) {
-
+/*
             $routeProvider
                 .when( '/',         { template:     'Willkommen zur Startseite' } )
                 .when( '/about',    { template:     'Über unsere Pizzeria'      } )
                 .when( '/contact',  { templateUrl:  'res/html/contact.html'     } )
                 .when( '/imprint',  { template:     'Impressums-Angaben'        } )
                 .otherwise(         { redirectTo:   '/'                         } );
+*/
+            MfgNgTest.routeFunction( $routeProvider );
         }
     );
