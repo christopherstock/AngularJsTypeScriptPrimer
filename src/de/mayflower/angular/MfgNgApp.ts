@@ -133,34 +133,24 @@
         function( $scope, Cart ) {
 
             $scope.cart = Cart;
+
+
         }
     );
+
+
+
 
     MfgNgApp.myModule.directive(
         'price',
         function() {
-
-            return {
-                restrict:   'E',
-                scope:      {
-                    value:  '='
-                },
-                template:       '<span ng-show="value == 0">kostenlos</span>'
-                            +   '<span ng-show="value > 0">{{value | currency}}</span>'
-            }
+            return MfgNgTest.directivePriceFunction();
         }
     );
 
+    //specify route provider
     MfgNgApp.myModule.config(
         function( $routeProvider ) {
-/*
-            $routeProvider
-                .when( '/',         { template:     'Willkommen zur Startseite' } )
-                .when( '/about',    { template:     'Über unsere Pizzeria'      } )
-                .when( '/contact',  { templateUrl:  'res/html/contact.html'     } )
-                .when( '/imprint',  { template:     'Impressums-Angaben'        } )
-                .otherwise(         { redirectTo:   '/'                         } );
-*/
             MfgNgTest.routeFunction( $routeProvider );
         }
     );

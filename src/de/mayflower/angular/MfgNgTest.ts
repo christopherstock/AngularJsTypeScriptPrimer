@@ -8,9 +8,9 @@
     class MfgNgTest
     {
         /*****************************************************************************
-        *   Just a test function.
+        *   Specifies a route provider.
         *****************************************************************************/
-        public static routeFunction( routeProvider ):void
+        public static routeFunction( routeProvider:angular.route.IRouteProvider ):void
         {
             routeProvider
             .when( '/',         { template:     'Willkommen zur Startseite' } )
@@ -18,5 +18,17 @@
             .when( '/contact',  { templateUrl:  'res/html/contact.html'     } )
             .when( '/imprint',  { template:     'Impressums-Angaben'        } )
             .otherwise(         { redirectTo:   '/'                         } );
+        }
+
+        public static directivePriceFunction()
+        {
+            return {
+                restrict:   'E',
+                scope:      {
+                    value:  '='
+                },
+                template:       '<span ng-show="value == 0">kostenlos</span>'
+                            +   '<span ng-show="value > 0">{{value | currency}}</span>'
+            };
         }
     }
