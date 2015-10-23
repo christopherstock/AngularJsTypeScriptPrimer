@@ -23,9 +23,7 @@
         *****************************************************************************/
         public static main():void
         {
-
-
-
+            MfgNgTest.initModule();
         }
     }
 
@@ -44,65 +42,3 @@
     window.onunload = function()
     {
     };
-
-
-
-    /*****************************************************************************
-    *   Angular code to move to TS.
-    *****************************************************************************/
-    MfgNgApp.myModule = angular.module(
-        'chrisApp',
-        [
-            'ngAnimate',
-            'ngRoute'
-        ]
-    );
-
-    MfgNgApp.myModule.controller(
-        'ArticlesCtrl',
-        function( $scope ) {
-            MfgNgTest.specifyArticlesController( $scope );
-        }
-    );
-
-    MfgNgApp.myModule.controller(
-        'FlyerArticlesCtrl',
-        function( $scope, $http ) {
-            MfgNgTest.specifyFlyerArticlesController( $scope, $http );
-        }
-    );
-
-    MfgNgApp.myModule.factory(
-        'Cart',
-        function() {
-            return MfgNgTest.specifyCartServiceFactory()
-        }
-    );
-
-    MfgNgApp.myModule.controller(
-        'CartArticlesCtrl',
-        function( $scope, $http, Cart ) {
-            MfgNgTest.specifyCartArticlesController( $scope, $http, Cart );
-        }
-    );
-
-    MfgNgApp.myModule.controller(
-        'CartCartCtrl',
-        function( $scope, Cart ) {
-            $scope.cart = Cart;
-        }
-    );
-
-    MfgNgApp.myModule.directive(
-        'price',
-        function() {
-            return MfgNgTest.directivePriceFunction();
-        }
-    );
-
-    //specify route provider
-    MfgNgApp.myModule.config(
-        function( $routeProvider ) {
-            MfgNgTest.routeFunction( $routeProvider );
-        }
-    );
