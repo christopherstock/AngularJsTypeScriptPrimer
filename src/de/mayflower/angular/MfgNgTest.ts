@@ -20,6 +20,9 @@
             .otherwise(         { redirectTo:   '/'                         } );
         }
 
+        /*****************************************************************************
+        *   Specifies the <price> directive.
+        *****************************************************************************/
         public static directivePriceFunction()
         {
             return {
@@ -30,5 +33,17 @@
                 template:       '<span ng-show="value == 0">kostenlos</span>'
                             +   '<span ng-show="value > 0">{{value | currency}}</span>'
             };
+        }
+
+        /*****************************************************************************
+        *   Specifies all articles in the given scope.
+        *****************************************************************************/
+        public static specifyArticlesControllerArticles( scope:any )
+        {
+            scope.articles = [
+                {   id: 7,  name: "Pizza Vegetaria", price: 5    },
+                {   id: 13, name: "Pizza Salami",    price: 5.5  },
+                {   id: 19, name: "Pizza Thunfisch", price: 6    }
+            ];
         }
     }

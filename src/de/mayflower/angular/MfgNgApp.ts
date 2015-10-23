@@ -58,26 +58,17 @@
         ]
     );
 
-    console.log( "myModule is: [" + MfgNgApp.myModule + "]" );
-
     MfgNgApp.myModule.controller(
         'ArticlesCtrl',
         function( $scope ) {
-
-            $scope.articles = [
-                {   id: 7,  name: "Pizza Vegetaria", price: 5    },
-                {   id: 13, name: "Pizza Salami",    price: 5.5  },
-                {   id: 19, name: "Pizza Thunfisch", price: 6    }
-            ];
+            MfgNgTest.specifyArticlesControllerArticles( $scope );
         }
     );
 
     MfgNgApp.myModule.controller(
         'FlyerArticlesCtrl',
         function( $scope, $http ) {
-
             $http.get( 'res/data/articles.json' ).then(
-
                 function( articlesResponse ) {
 
                     $scope.flyerArticles = articlesResponse.data;
