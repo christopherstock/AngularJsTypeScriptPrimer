@@ -32,8 +32,7 @@
     *****************************************************************************/
     window.onload = function()
     {
-        //invoke main method
-        MfgNgApp.main();
+        // do NOT place the init code here!
     };
 
     /*****************************************************************************
@@ -42,3 +41,6 @@
     window.onunload = function()
     {
     };
+
+    //invoke main method HERE!
+    MfgNgApp.main();
